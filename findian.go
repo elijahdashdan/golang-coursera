@@ -1,25 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
 )
 
 func main() {
-	fmt.Printf("Enter a string: ")
-	//_, err := fmt.Scanln(&s)
-	in := bufio.NewReader(os.Stdin)
-	line, err := in.ReadString('\n')
+	fmt.Println("Enter any String.")
+	var str string
+	_, err := fmt.Scan(&str)
 	if err != nil {
-		fmt.Printf("ERROR: %s\n", err)
+		fmt.Println("Error:", err)
+		return
 	}
-	line = strings.Replace(line, "\n", "", -1)
-	line = strings.ToLower(line)
-	if strings.HasPrefix(line, "i") &&
-		strings.HasSuffix(line, "n") &&
-		strings.Contains(line, "a") {
+	s := strings.ToLower(str)
+	if s[0] == 'i' && s[len(s)-1] == 'n' && strings.Contains(s, "a") {
 		fmt.Println("Found!")
 	} else {
 		fmt.Println("Not Found!")
